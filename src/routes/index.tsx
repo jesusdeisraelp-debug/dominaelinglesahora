@@ -24,10 +24,15 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
+import { useEffect, useState } from "react";
+
 function useHeroVariant() {
-  if (typeof window === "undefined") return "a";
-  const v = new URLSearchParams(window.location.search).get("variant");
-  return v === "b" ? "b" : "a";
+  const [variant, setVariant] = useState<"a" | "b">("a");
+  useEffect(() => {
+    const v = new URLSearchParams(window.location.search).get("variant");
+    if (v === "b") setVariant("b");
+  }, []);
+  return variant;
 }
 
 function HomePage() {
