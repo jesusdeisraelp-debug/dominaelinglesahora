@@ -25,7 +25,6 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-import { useEffect, useState } from "react";
 
 function useHeroVariant() {
   const [variant, setVariant] = useState<"a" | "b">("a");
