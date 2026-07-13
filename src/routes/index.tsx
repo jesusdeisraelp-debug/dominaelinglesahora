@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Play, Sparkles, Target, Repeat, Activity, Compass } from "lucide-react";
+import { ArrowRight, Play, Sparkles, Target, Activity, Compass } from "lucide-react";
+import { useEffect, useState } from "react";
 import { SiteLayout } from "@/components/site/Layout";
 import { Section, Eyebrow } from "@/components/site/Section";
 import { PracticeCalculator } from "@/components/site/PracticeCalculator";
