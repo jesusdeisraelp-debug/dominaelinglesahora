@@ -9,8 +9,86 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VslRouteImport } from './routes/vsl'
+import { Route as UpsellRouteImport } from './routes/upsell'
+import { Route as TerminosRouteImport } from './routes/terminos'
+import { Route as Reto21DiasRouteImport } from './routes/reto-21-dias'
+import { Route as RecursosRouteImport } from './routes/recursos'
+import { Route as PrivacidadRouteImport } from './routes/privacidad'
+import { Route as LeadmagnetRouteImport } from './routes/leadmagnet'
+import { Route as GraciasRecursoRouteImport } from './routes/gracias-recurso'
+import { Route as EvergreenRouteImport } from './routes/evergreen'
+import { Route as EbookSaleRouteImport } from './routes/ebook-sale'
+import { Route as DownsellRouteImport } from './routes/downsell'
+import { Route as ContactoRouteImport } from './routes/contacto'
+import { Route as CheckoutPreviewRouteImport } from './routes/checkout-preview'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VslRoute = VslRouteImport.update({
+  id: '/vsl',
+  path: '/vsl',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UpsellRoute = UpsellRouteImport.update({
+  id: '/upsell',
+  path: '/upsell',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TerminosRoute = TerminosRouteImport.update({
+  id: '/terminos',
+  path: '/terminos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Reto21DiasRoute = Reto21DiasRouteImport.update({
+  id: '/reto-21-dias',
+  path: '/reto-21-dias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecursosRoute = RecursosRouteImport.update({
+  id: '/recursos',
+  path: '/recursos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacidadRoute = PrivacidadRouteImport.update({
+  id: '/privacidad',
+  path: '/privacidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeadmagnetRoute = LeadmagnetRouteImport.update({
+  id: '/leadmagnet',
+  path: '/leadmagnet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GraciasRecursoRoute = GraciasRecursoRouteImport.update({
+  id: '/gracias-recurso',
+  path: '/gracias-recurso',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EvergreenRoute = EvergreenRouteImport.update({
+  id: '/evergreen',
+  path: '/evergreen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EbookSaleRoute = EbookSaleRouteImport.update({
+  id: '/ebook-sale',
+  path: '/ebook-sale',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DownsellRoute = DownsellRouteImport.update({
+  id: '/downsell',
+  path: '/downsell',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactoRoute = ContactoRouteImport.update({
+  id: '/contacto',
+  path: '/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutPreviewRoute = CheckoutPreviewRouteImport.update({
+  id: '/checkout-preview',
+  path: '/checkout-preview',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +97,214 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/checkout-preview': typeof CheckoutPreviewRoute
+  '/contacto': typeof ContactoRoute
+  '/downsell': typeof DownsellRoute
+  '/ebook-sale': typeof EbookSaleRoute
+  '/evergreen': typeof EvergreenRoute
+  '/gracias-recurso': typeof GraciasRecursoRoute
+  '/leadmagnet': typeof LeadmagnetRoute
+  '/privacidad': typeof PrivacidadRoute
+  '/recursos': typeof RecursosRoute
+  '/reto-21-dias': typeof Reto21DiasRoute
+  '/terminos': typeof TerminosRoute
+  '/upsell': typeof UpsellRoute
+  '/vsl': typeof VslRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/checkout-preview': typeof CheckoutPreviewRoute
+  '/contacto': typeof ContactoRoute
+  '/downsell': typeof DownsellRoute
+  '/ebook-sale': typeof EbookSaleRoute
+  '/evergreen': typeof EvergreenRoute
+  '/gracias-recurso': typeof GraciasRecursoRoute
+  '/leadmagnet': typeof LeadmagnetRoute
+  '/privacidad': typeof PrivacidadRoute
+  '/recursos': typeof RecursosRoute
+  '/reto-21-dias': typeof Reto21DiasRoute
+  '/terminos': typeof TerminosRoute
+  '/upsell': typeof UpsellRoute
+  '/vsl': typeof VslRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/checkout-preview': typeof CheckoutPreviewRoute
+  '/contacto': typeof ContactoRoute
+  '/downsell': typeof DownsellRoute
+  '/ebook-sale': typeof EbookSaleRoute
+  '/evergreen': typeof EvergreenRoute
+  '/gracias-recurso': typeof GraciasRecursoRoute
+  '/leadmagnet': typeof LeadmagnetRoute
+  '/privacidad': typeof PrivacidadRoute
+  '/recursos': typeof RecursosRoute
+  '/reto-21-dias': typeof Reto21DiasRoute
+  '/terminos': typeof TerminosRoute
+  '/upsell': typeof UpsellRoute
+  '/vsl': typeof VslRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/checkout-preview'
+    | '/contacto'
+    | '/downsell'
+    | '/ebook-sale'
+    | '/evergreen'
+    | '/gracias-recurso'
+    | '/leadmagnet'
+    | '/privacidad'
+    | '/recursos'
+    | '/reto-21-dias'
+    | '/terminos'
+    | '/upsell'
+    | '/vsl'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/checkout-preview'
+    | '/contacto'
+    | '/downsell'
+    | '/ebook-sale'
+    | '/evergreen'
+    | '/gracias-recurso'
+    | '/leadmagnet'
+    | '/privacidad'
+    | '/recursos'
+    | '/reto-21-dias'
+    | '/terminos'
+    | '/upsell'
+    | '/vsl'
+  id:
+    | '__root__'
+    | '/'
+    | '/checkout-preview'
+    | '/contacto'
+    | '/downsell'
+    | '/ebook-sale'
+    | '/evergreen'
+    | '/gracias-recurso'
+    | '/leadmagnet'
+    | '/privacidad'
+    | '/recursos'
+    | '/reto-21-dias'
+    | '/terminos'
+    | '/upsell'
+    | '/vsl'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CheckoutPreviewRoute: typeof CheckoutPreviewRoute
+  ContactoRoute: typeof ContactoRoute
+  DownsellRoute: typeof DownsellRoute
+  EbookSaleRoute: typeof EbookSaleRoute
+  EvergreenRoute: typeof EvergreenRoute
+  GraciasRecursoRoute: typeof GraciasRecursoRoute
+  LeadmagnetRoute: typeof LeadmagnetRoute
+  PrivacidadRoute: typeof PrivacidadRoute
+  RecursosRoute: typeof RecursosRoute
+  Reto21DiasRoute: typeof Reto21DiasRoute
+  TerminosRoute: typeof TerminosRoute
+  UpsellRoute: typeof UpsellRoute
+  VslRoute: typeof VslRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vsl': {
+      id: '/vsl'
+      path: '/vsl'
+      fullPath: '/vsl'
+      preLoaderRoute: typeof VslRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/upsell': {
+      id: '/upsell'
+      path: '/upsell'
+      fullPath: '/upsell'
+      preLoaderRoute: typeof UpsellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terminos': {
+      id: '/terminos'
+      path: '/terminos'
+      fullPath: '/terminos'
+      preLoaderRoute: typeof TerminosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reto-21-dias': {
+      id: '/reto-21-dias'
+      path: '/reto-21-dias'
+      fullPath: '/reto-21-dias'
+      preLoaderRoute: typeof Reto21DiasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recursos': {
+      id: '/recursos'
+      path: '/recursos'
+      fullPath: '/recursos'
+      preLoaderRoute: typeof RecursosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacidad': {
+      id: '/privacidad'
+      path: '/privacidad'
+      fullPath: '/privacidad'
+      preLoaderRoute: typeof PrivacidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leadmagnet': {
+      id: '/leadmagnet'
+      path: '/leadmagnet'
+      fullPath: '/leadmagnet'
+      preLoaderRoute: typeof LeadmagnetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gracias-recurso': {
+      id: '/gracias-recurso'
+      path: '/gracias-recurso'
+      fullPath: '/gracias-recurso'
+      preLoaderRoute: typeof GraciasRecursoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/evergreen': {
+      id: '/evergreen'
+      path: '/evergreen'
+      fullPath: '/evergreen'
+      preLoaderRoute: typeof EvergreenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ebook-sale': {
+      id: '/ebook-sale'
+      path: '/ebook-sale'
+      fullPath: '/ebook-sale'
+      preLoaderRoute: typeof EbookSaleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/downsell': {
+      id: '/downsell'
+      path: '/downsell'
+      fullPath: '/downsell'
+      preLoaderRoute: typeof DownsellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contacto': {
+      id: '/contacto'
+      path: '/contacto'
+      fullPath: '/contacto'
+      preLoaderRoute: typeof ContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout-preview': {
+      id: '/checkout-preview'
+      path: '/checkout-preview'
+      fullPath: '/checkout-preview'
+      preLoaderRoute: typeof CheckoutPreviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +317,19 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CheckoutPreviewRoute: CheckoutPreviewRoute,
+  ContactoRoute: ContactoRoute,
+  DownsellRoute: DownsellRoute,
+  EbookSaleRoute: EbookSaleRoute,
+  EvergreenRoute: EvergreenRoute,
+  GraciasRecursoRoute: GraciasRecursoRoute,
+  LeadmagnetRoute: LeadmagnetRoute,
+  PrivacidadRoute: PrivacidadRoute,
+  RecursosRoute: RecursosRoute,
+  Reto21DiasRoute: Reto21DiasRoute,
+  TerminosRoute: TerminosRoute,
+  UpsellRoute: UpsellRoute,
+  VslRoute: VslRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -22,7 +22,7 @@ export const Route = createFileRoute("/downsell")({
 });
 
 function Downsell() {
-  const [url, setUrl] = useState(hotmart.downsellCheckoutURL);
+  const [url, setUrl] = useState<string>(hotmart.downsellCheckoutURL);
   useEffect(() => {
     setUrl(withUTMs(hotmart.downsellCheckoutURL));
   }, []);

@@ -43,7 +43,7 @@ export const Route = createFileRoute("/vsl")({
 });
 
 function VSLPage() {
-  const [checkout, setCheckout] = useState(hotmart.ebookCheckoutURL);
+  const [checkout, setCheckout] = useState<string>(hotmart.ebookCheckoutURL);
   useEffect(() => {
     setCheckout(withUTMs(hotmart.ebookCheckoutURL));
     track("ViewVSL");

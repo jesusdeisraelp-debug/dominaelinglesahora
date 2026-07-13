@@ -32,7 +32,7 @@ export const Route = createFileRoute("/ebook-sale")({
 });
 
 function SalesPage() {
-  const [checkoutURL, setCheckoutURL] = useState(hotmart.ebookCheckoutURL);
+  const [checkoutURL, setCheckoutURL] = useState<string>(hotmart.ebookCheckoutURL);
   useEffect(() => {
     setCheckoutURL(withUTMs(hotmart.ebookCheckoutURL));
   }, []);

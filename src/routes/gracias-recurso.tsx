@@ -22,7 +22,7 @@ export const Route = createFileRoute("/gracias-recurso")({
 });
 
 function ThankYou() {
-  const [checkout, setCheckout] = useState(hotmart.ebookCheckoutURL);
+  const [checkout, setCheckout] = useState<string>(hotmart.ebookCheckoutURL);
   useEffect(() => {
     setCheckout(withUTMs(hotmart.ebookCheckoutURL));
     track("CompleteRegistration", { source: "leadmagnet" });

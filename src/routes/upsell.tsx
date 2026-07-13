@@ -22,7 +22,7 @@ export const Route = createFileRoute("/upsell")({
 });
 
 function Upsell() {
-  const [url, setUrl] = useState(hotmart.upsellCheckoutURL);
+  const [url, setUrl] = useState<string>(hotmart.upsellCheckoutURL);
   useEffect(() => {
     setUrl(withUTMs(hotmart.upsellCheckoutURL));
     track("UpsellView", { product: "reto-21-guiado" });

@@ -68,7 +68,7 @@ function Evergreen() {
   const { next, hh, mm, ss } = useNextSlot(evergreenSchedule.timesLocal);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [slot, setSlot] = useState(evergreenSchedule.timesLocal[0]);
+  const [slot, setSlot] = useState<string>(evergreenSchedule.timesLocal[0]);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
