@@ -16,8 +16,8 @@ export const Route = createFileRoute("/")({
         content:
           "No necesitas otra clase de inglés. Convierte 30 minutos diarios de YouTube o TikTok en entrenamiento real con el Método INMERSIÓN 21.",
       },
-      { property: "og:title", content: "Domina el Inglés Ahora — Método INMERSIÓN 21" },
-      { property: "og:description", content: "Sistema práctico de 21 días para entrenar inglés con el contenido que ya consumes." },
+      { property: "og:title", content: "Domina el Inglés Ahora — Entrena inglés con YouTube y TikTok" },
+      { property: "og:description", content: "No necesitas otra clase de inglés. Convierte 30 minutos diarios de YouTube o TikTok en entrenamiento real con el Método INMERSIÓN 21." },
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
