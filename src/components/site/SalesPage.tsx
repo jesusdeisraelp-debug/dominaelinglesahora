@@ -151,7 +151,7 @@ export function SalesPage() {
             </div>
             <div className="order-first md:order-last">
               <ProductMockup
-                src="/images/mockup-metodo-youtalk21.png"
+                src="/imagenes/mockup-metodo-youtalk21.png"
                 alt="Mockup premium del ebook Método YouTalk 21"
                 priority
                 className="max-w-md"
@@ -410,7 +410,7 @@ export function SalesPage() {
             ))}
           </div>
           <ProductMockup
-            src="/images/mockup-bonos-youtalk21.png"
+            src="/imagenes/mockup-bonos-youtalk21.png"
             alt="Mockup de los tres bonos incluidos con Método YouTalk 21"
             className="mt-10 max-w-3xl"
           />
@@ -422,7 +422,7 @@ export function SalesPage() {
         <Container className="py-14 md:py-20">
           <div className="grid items-center gap-8 rounded-3xl border border-navy/10 bg-white p-6 shadow-card md:grid-cols-2 md:p-10">
             <ProductMockup
-              src="/images/mockup-workbook-tracker-youtalk21.png"
+              src="/imagenes/mockup-workbook-tracker-youtalk21.png"
               alt="Mockup del Workbook y Tracker de Acción YouTalk 21"
               className="max-w-md"
             />
@@ -467,7 +467,7 @@ export function SalesPage() {
           <div className="mx-auto mt-10 max-w-2xl overflow-hidden rounded-3xl bg-white/5 backdrop-blur">
             <div className="p-6 pb-0">
               <ProductMockup
-                src="/images/mockup-stack-completo-youtalk21.png"
+                src="/imagenes/mockup-stack-completo-youtalk21.png"
                 alt="Vista del ecosistema completo de productos YouTalk 21"
                 className="max-w-xl"
               />
