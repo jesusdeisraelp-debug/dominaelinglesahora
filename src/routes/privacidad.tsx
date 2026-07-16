@@ -1,13 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
-import { Section } from "@/components/site/Section";
-import { legal, brand, social } from "@/config/funnel";
+import { legal, social } from "@/config/funnel";
 
 export const Route = createFileRoute("/privacidad")({
   head: () => ({
     meta: [
-      { title: "Privacidad — Domina el Inglés Ahora" },
-      { name: "description", content: "Política de privacidad provisional de Domina el Inglés Ahora." },
+      { title: "Aviso de privacidad — Método YouTalk 21" },
+      { name: "description", content: "Cómo tratamos tus datos en Domina el Inglés Ahora." },
       { property: "og:url", content: "/privacidad" },
     ],
     links: [{ rel: "canonical", href: "/privacidad" }],
@@ -17,24 +16,46 @@ export const Route = createFileRoute("/privacidad")({
 
 function Privacidad() {
   return (
-    <SiteLayout pageName="privacidad" mobileCta={false}>
-      <Section className="max-w-3xl">
-        <h1 className="text-4xl font-extrabold">Política de privacidad</h1>
-        <p className="mt-2 text-sm text-muted-foreground">Última actualización: {legal.lastUpdated}</p>
-        <div className="prose prose-neutral mt-8 max-w-none text-foreground/90 [&>h2]:mt-8 [&>h2]:text-xl [&>h2]:font-bold [&>p]:mt-3 [&>p]:text-muted-foreground">
-          <p>
-            Este es un texto provisional. Reemplázalo con la política definitiva antes de ejecutar campañas pagadas.
+    <SiteLayout pageName="privacidad" minimalHeader>
+      <section className="bg-cream">
+        <div className="mx-auto max-w-3xl px-4 py-14 md:px-6 md:py-20">
+          <h1 className="text-navy">Aviso de privacidad</h1>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Última actualización: {legal.lastUpdated}. Texto provisional editable.
           </p>
-          <h2>Qué datos recopilamos</h2>
-          <p>Nombre y correo electrónico cuando te registras en formularios (lead magnet, clase evergreen o lista de espera).</p>
-          <h2>Para qué los usamos</h2>
-          <p>Enviarte el recurso solicitado, comunicaciones relacionadas con {brand.name} y eventualmente ofertas de nuestros productos.</p>
-          <h2>Con quién los compartimos</h2>
-          <p>Proveedores necesarios para operar el servicio (email marketing y procesador de pagos como Hotmart).</p>
-          <h2>Tus derechos</h2>
-          <p>Puedes solicitar la baja o eliminación de tus datos escribiendo a {social.email}.</p>
+
+          <div className="mt-8 space-y-6 text-muted-foreground">
+            <p>
+              {legal.companyName} respeta tu privacidad. Este aviso describe qué datos recopilamos, para qué los usamos y cómo puedes ejercer tus derechos.
+            </p>
+            <div>
+              <h2 className="text-navy">Datos que recopilamos</h2>
+              <p className="mt-2">
+                Al comprar o comunicarte con nosotros, podemos recibir tu nombre, correo electrónico y datos de compra a través de Hotmart. También podemos recolectar datos de navegación anónimos con fines analíticos.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-navy">Cómo usamos tus datos</h2>
+              <p className="mt-2">
+                Usamos tus datos para entregar el producto que compraste, brindarte soporte y enviarte información relacionada con tu compra. No vendemos tus datos a terceros.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-navy">Tus derechos</h2>
+              <p className="mt-2">
+                Puedes solicitar acceso, rectificación o eliminación de tus datos escribiendo a{" "}
+                <a href={`mailto:${social.email}`} className="font-semibold text-navy underline underline-offset-4">{social.email}</a>.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-navy">Cambios en este aviso</h2>
+              <p className="mt-2">
+                Podemos actualizar este aviso para reflejar cambios legales o de nuestros servicios. La fecha de la última actualización aparece al inicio de esta página.
+              </p>
+            </div>
+          </div>
         </div>
-      </Section>
+      </section>
     </SiteLayout>
   );
 }
