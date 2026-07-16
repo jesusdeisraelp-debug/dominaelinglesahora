@@ -77,23 +77,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Domina el Inglés Ahora — Entrena inglés con YouTube y TikTok" },
-      {
-        name: "description",
-        content:
-          "No necesitas otra clase de inglés. Convierte 30 minutos diarios de YouTube o TikTok en entrenamiento real con el Método INMERSIÓN 21.",
-      },
       { name: "author", content: "Domina el Inglés Ahora" },
       { property: "og:site_name", content: "Domina el Inglés Ahora" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "theme-color", content: "#081A33" },
-      { property: "og:title", content: "Domina el Inglés Ahora — Entrena inglés con YouTube y TikTok" },
-      { name: "twitter:title", content: "Domina el Inglés Ahora — Entrena inglés con YouTube y TikTok" },
-      { property: "og:description", content: "No necesitas otra clase de inglés. Convierte 30 minutos diarios de YouTube o TikTok en entrenamiento real con el Método INMERSIÓN 21." },
-      { name: "twitter:description", content: "No necesitas otra clase de inglés. Convierte 30 minutos diarios de YouTube o TikTok en entrenamiento real con el Método INMERSIÓN 21." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1cdea0b4-2c88-40cc-a7b9-b8058678bcf7/id-preview-9a921209--c2ba39d1-3212-4b1f-95f5-95301bd4cc79.lovable.app-1783902510178.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1cdea0b4-2c88-40cc-a7b9-b8058678bcf7/id-preview-9a921209--c2ba39d1-3212-4b1f-95f5-95301bd4cc79.lovable.app-1783902510178.png" },
+      { name: "theme-color", content: "#071A2B" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -102,7 +90,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap",
       },
     ],
   }),
