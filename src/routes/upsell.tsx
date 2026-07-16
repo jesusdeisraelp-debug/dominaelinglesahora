@@ -41,6 +41,27 @@ function UpsellPage() {
             <p className="mt-3 max-w-2xl text-muted-foreground">
               Convierte ChatGPT en tu compañero de conversación y practica hoy mismo, sin depender de un intercambio ni de una clase agendada.
             </p>
+            <div className="mt-6 grid w-full items-center gap-6 md:grid-cols-[1fr_0.55fr]">
+              <img
+                src="/images/mockup-youtalk-ai.png"
+                alt="Mockup premium del Reto VIP YouTalk AI"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="mx-auto h-auto w-full max-w-lg object-contain drop-shadow-2xl"
+              />
+              <div className="rounded-2xl border border-navy/10 bg-white/70 p-4">
+                <p className="text-xs font-bold uppercase tracking-widest text-coral">Ya adquirido</p>
+                <img
+                  src="/images/mockup-metodo-youtalk21.png"
+                  alt="Método YouTalk 21 adquirido antes de esta oferta"
+                  loading="lazy"
+                  decoding="async"
+                  className="mx-auto mt-3 h-auto w-full max-w-48 object-contain"
+                />
+                <p className="mt-2 text-xs text-muted-foreground">YouTalk AI complementa el método que ya compraste.</p>
+              </div>
+            </div>
           </div>
 
           {/* GAP */}
@@ -81,11 +102,21 @@ function UpsellPage() {
 
           {/* OFERTA */}
           <div className="mt-12 rounded-3xl bg-navy p-8 text-center text-white shadow-elegant">
+            <img
+              src="/images/mockup-stack-completo-youtalk21.png"
+              alt="Ecosistema YouTalk 21 con el complemento YouTalk AI"
+              loading="lazy"
+              decoding="async"
+              className="mx-auto mb-6 h-auto w-full max-w-2xl object-contain drop-shadow-2xl"
+            />
             <p className="text-xs uppercase tracking-widest text-teal">Reto VIP YouTalk AI</p>
             <h2 className="mt-2 text-white">Habla con ChatGPT hoy mismo</h2>
             <p className="mt-3 text-white/70">Complemento único al Método YouTalk 21.</p>
             <p className="mt-6 text-5xl font-black">${prices.upsellUSD} <span className="text-lg font-semibold text-white/70">USD</span></p>
             <p className="mt-1 text-xs text-white/60">Pago único · sin suscripción</p>
+            <p className="mx-auto mt-3 max-w-xl text-xs text-white/60">
+              Este botón agrega únicamente el Reto VIP YouTalk AI por ${prices.upsellUSD} USD. El método principal ya fue adquirido; los demás productos del ecosistema no se agregan con esta compra.
+            </p>
 
             <div className="mt-8 flex flex-col items-center gap-3">
               <a

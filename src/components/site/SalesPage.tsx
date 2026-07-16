@@ -70,36 +70,27 @@ function CTA({ children, subtext, id }: { children: React.ReactNode; subtext?: s
 
 /* ------------ Ebook mockup ------------ */
 
-function EbookMockup() {
+function ProductMockup({
+  src,
+  alt,
+  priority = false,
+  className = "",
+}: {
+  src: string;
+  alt: string;
+  priority?: boolean;
+  className?: string;
+}) {
   return (
-    <div className="relative mx-auto w-full max-w-sm">
-      <div className="book-cover relative aspect-[3/4] w-full rounded-2xl p-6 text-white">
-        <div className="flex h-full flex-col justify-between">
-          <div>
-            <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-teal">
-              Domina el Inglés Ahora
-            </div>
-            <div className="mt-1 h-px w-10 bg-teal" />
-          </div>
-          <div>
-            <div className="text-[10px] uppercase tracking-widest text-white/60">Método</div>
-            <h3 className="mt-1 text-3xl font-extrabold leading-tight text-white">
-              YouTalk<span className="text-teal">21</span>
-            </h3>
-            <p className="mt-2 text-xs text-white/70">
-              Convierte el contenido que ya consumes en práctica real de inglés.
-            </p>
-          </div>
-          <div className="flex items-center justify-between text-[10px] uppercase tracking-widest text-white/50">
-            <span>Israel Ponce</span>
-            <span>21 días</span>
-          </div>
-        </div>
-        <div className="absolute inset-y-4 left-0 w-1.5 rounded-r bg-black/25" />
-      </div>
-      <div className="absolute -right-4 -top-4 hidden rounded-full bg-coral px-3 py-1 text-xs font-bold uppercase tracking-wide text-white shadow-soft sm:block">
-        Nuevo relanzamiento
-      </div>
+    <div className={`relative mx-auto w-full ${className}`}>
+      <img
+        src={src}
+        alt={alt}
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "auto"}
+        decoding="async"
+        className="mx-auto h-auto w-full object-contain drop-shadow-2xl"
+      />
     </div>
   );
 }
@@ -159,7 +150,12 @@ export function SalesPage() {
               </div>
             </div>
             <div className="order-first md:order-last">
-              <EbookMockup />
+              <ProductMockup
+                src="/images/mockup-metodo-youtalk21.png"
+                alt="Mockup premium del ebook Método YouTalk 21"
+                priority
+                className="max-w-md"
+              />
             </div>
           </div>
         </Container>
@@ -413,6 +409,34 @@ export function SalesPage() {
               </div>
             ))}
           </div>
+          <ProductMockup
+            src="/images/mockup-bonos-youtalk21.png"
+            alt="Mockup de los tres bonos incluidos con Método YouTalk 21"
+            className="mt-10 max-w-3xl"
+          />
+        </Container>
+      </section>
+
+      {/* ORDER BUMP */}
+      <section className="bg-cream">
+        <Container className="py-14 md:py-20">
+          <div className="grid items-center gap-8 rounded-3xl border border-navy/10 bg-white p-6 shadow-card md:grid-cols-2 md:p-10">
+            <ProductMockup
+              src="/images/mockup-workbook-tracker-youtalk21.png"
+              alt="Mockup del Workbook y Tracker de Acción YouTalk 21"
+              className="max-w-md"
+            />
+            <div>
+              <Chip tone="coral">Implementación opcional</Chip>
+              <h2 className="mt-4 text-navy">Convierte cada día del método en una acción registrada</h2>
+              <p className="mt-4 text-muted-foreground">
+                El Workbook & Tracker te ayuda a registrar tu práctica, detectar avances y sostener la rutina durante los 21 días.
+              </p>
+              <p className="mt-5 rounded-xl bg-coral/10 p-4 text-sm font-semibold text-navy">
+                Disponible opcionalmente en el checkout por ${prices.orderBumpUSD} USD. No está incluido en la oferta principal de ${prices.mainUSD} USD.
+              </p>
+            </div>
+          </div>
         </Container>
       </section>
 
@@ -441,6 +465,16 @@ export function SalesPage() {
             <h2 className="mt-4 text-white">Un paquete pensado para que empieces esta semana</h2>
           </div>
           <div className="mx-auto mt-10 max-w-2xl overflow-hidden rounded-3xl bg-white/5 backdrop-blur">
+            <div className="p-6 pb-0">
+              <ProductMockup
+                src="/images/mockup-stack-completo-youtalk21.png"
+                alt="Vista del ecosistema completo de productos YouTalk 21"
+                className="max-w-xl"
+              />
+              <p className="mx-auto mt-3 max-w-xl text-xs text-white/60">
+                Imagen del ecosistema completo. YouTalk AI se ofrece por separado después de la compra y no está incluido en los ${prices.mainUSD} USD.
+              </p>
+            </div>
             <ul className="divide-y divide-white/10">
               {[
                 ["Método YouTalk 21 (ebook principal)", "El mapa completo de 5 etapas para 21 días."],
