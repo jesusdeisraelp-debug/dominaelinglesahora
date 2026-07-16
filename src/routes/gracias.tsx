@@ -1,4 +1,4 @@
-import { createFileRoute, useSearch, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, Mail, LifeBuoy, PlayCircle, Download } from "lucide-react";
 import { SiteLayout } from "@/components/site/Layout";
 import { checkout } from "@/config/funnel";
