@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as UpsellRouteImport } from './routes/upsell'
 import { Route as TerminosRouteImport } from './routes/terminos'
 import { Route as PrivacidadRouteImport } from './routes/privacidad'
+import { Route as GraciasRouteImport } from './routes/gracias'
 import { Route as EbookSaleRouteImport } from './routes/ebook-sale'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as IndexRouteImport } from './routes/index'
@@ -29,6 +30,11 @@ const TerminosRoute = TerminosRouteImport.update({
 const PrivacidadRoute = PrivacidadRouteImport.update({
   id: '/privacidad',
   path: '/privacidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GraciasRoute = GraciasRouteImport.update({
+  id: '/gracias',
+  path: '/gracias',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EbookSaleRoute = EbookSaleRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
   '/ebook-sale': typeof EbookSaleRoute
+  '/gracias': typeof GraciasRoute
   '/privacidad': typeof PrivacidadRoute
   '/terminos': typeof TerminosRoute
   '/upsell': typeof UpsellRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
   '/ebook-sale': typeof EbookSaleRoute
+  '/gracias': typeof GraciasRoute
   '/privacidad': typeof PrivacidadRoute
   '/terminos': typeof TerminosRoute
   '/upsell': typeof UpsellRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
   '/ebook-sale': typeof EbookSaleRoute
+  '/gracias': typeof GraciasRoute
   '/privacidad': typeof PrivacidadRoute
   '/terminos': typeof TerminosRoute
   '/upsell': typeof UpsellRoute
@@ -78,6 +87,7 @@ export interface FileRouteTypes {
     | '/'
     | '/contacto'
     | '/ebook-sale'
+    | '/gracias'
     | '/privacidad'
     | '/terminos'
     | '/upsell'
@@ -86,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/contacto'
     | '/ebook-sale'
+    | '/gracias'
     | '/privacidad'
     | '/terminos'
     | '/upsell'
@@ -94,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/contacto'
     | '/ebook-sale'
+    | '/gracias'
     | '/privacidad'
     | '/terminos'
     | '/upsell'
@@ -103,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactoRoute: typeof ContactoRoute
   EbookSaleRoute: typeof EbookSaleRoute
+  GraciasRoute: typeof GraciasRoute
   PrivacidadRoute: typeof PrivacidadRoute
   TerminosRoute: typeof TerminosRoute
   UpsellRoute: typeof UpsellRoute
@@ -129,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/privacidad'
       fullPath: '/privacidad'
       preLoaderRoute: typeof PrivacidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gracias': {
+      id: '/gracias'
+      path: '/gracias'
+      fullPath: '/gracias'
+      preLoaderRoute: typeof GraciasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ebook-sale': {
@@ -159,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactoRoute: ContactoRoute,
   EbookSaleRoute: EbookSaleRoute,
+  GraciasRoute: GraciasRoute,
   PrivacidadRoute: PrivacidadRoute,
   TerminosRoute: TerminosRoute,
   UpsellRoute: UpsellRoute,
