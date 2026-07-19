@@ -71,7 +71,7 @@ function UpsellPage() {
             </p>
             <div className="mt-6 grid w-full items-center gap-6 md:grid-cols-[1fr_0.55fr]">
               <img
-                src="/imagenes/mockup-youtalk-ai.png"
+                src="/images/mockup-youtalk-ai.png"
                 alt="Mockup premium del Reto VIP YouTalk AI"
                 loading="eager"
                 fetchPriority="high"
@@ -81,7 +81,7 @@ function UpsellPage() {
               <div className="rounded-2xl border border-navy/10 bg-white/70 p-4">
                 <p className="text-xs font-bold uppercase tracking-widest text-coral">Ya adquirido</p>
                 <img
-                  src="/imagenes/mockup-metodo-youtalk21.png"
+                  src="/images/mockup-metodo-youtalk21.png"
                   alt="Método YouTalk 21 adquirido antes de esta oferta"
                   loading="lazy"
                   decoding="async"
@@ -131,7 +131,7 @@ function UpsellPage() {
           {/* OFERTA */}
           <div className="mt-12 rounded-3xl bg-navy p-8 text-center text-white shadow-elegant">
             <img
-              src="/imagenes/mockup-stack-completo-youtalk21.png"
+              src="/images/mockup-stack-completo-youtalk21.png"
               alt="Ecosistema YouTalk 21 con el complemento YouTalk AI"
               loading="lazy"
               decoding="async"
