@@ -30,7 +30,7 @@ export const prices = {
  * Todos los CTA del sitio consumen exclusivamente estas constantes.
  */
 export const checkout = {
-  HOTMART_MAIN_URL: "#checkout-principal-pendiente",
+  HOTMART_MAIN_URL: "https://pay.hotmart.com/Q100176724J?checkoutMode=10",
   HOTMART_UPSELL_URL: "#checkout-upsell-pendiente",
   SUPPORT_URL: "mailto:soporte@dominaelinglesahora.lat",
 } as const;
