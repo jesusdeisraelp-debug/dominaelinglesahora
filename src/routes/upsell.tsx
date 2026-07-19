@@ -1,8 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Check, ShieldCheck, Sparkles, MessageCircle, Bot, Mic, Zap } from "lucide-react";
+import { createFileRoute } from "@tanstack/react-router";
+import { Sparkles, MessageCircle, Bot, Mic, Zap } from "lucide-react";
 import { SiteLayout } from "@/components/site/Layout";
-import { checkout, prices } from "@/config/funnel";
-import { withUTMs } from "@/lib/utm";
+import { prices } from "@/config/funnel";
 import { track } from "@/lib/analytics";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useEffect } from "react";
@@ -21,8 +20,37 @@ export const Route = createFileRoute("/upsell")({
 });
 
 function UpsellPage() {
-  useEffect(() => { track("UpsellView", { product: "youtalk-ai" }); }, []);
-  const href = withUTMs(checkout.HOTMART_UPSELL_URL);
+  useEffect(() => {
+    track("UpsellView", { product: "youtalk-ai" });
+
+    const mountFunnel = () => {
+      const hotmart = (window as Window & {
+        checkoutElements?: {
+          init: (type: string) => { mount: (selector: string) => void };
+        };
+      }).checkoutElements;
+
+      hotmart?.init("salesFunnel").mount("#hotmart-sales-funnel");
+    };
+
+    const existingScript = document.querySelector<HTMLScriptElement>(
+      'script[src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"]',
+    );
+
+    if (existingScript) {
+      if ((window as Window & { checkoutElements?: unknown }).checkoutElements) mountFunnel();
+      else existingScript.addEventListener("load", mountFunnel, { once: true });
+      return () => existingScript.removeEventListener("load", mountFunnel);
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://checkout.hotmart.com/lib/hotmart-checkout-elements.js";
+    script.async = true;
+    script.addEventListener("load", mountFunnel, { once: true });
+    document.body.appendChild(script);
+
+    return () => script.removeEventListener("load", mountFunnel);
+  }, []);
 
   return (
     <SiteLayout pageName="upsell" hideNav>
@@ -43,7 +71,7 @@ function UpsellPage() {
             </p>
             <div className="mt-6 grid w-full items-center gap-6 md:grid-cols-[1fr_0.55fr]">
               <img
-                src="/images/mockup-youtalk-ai.png"
+                src="/imagenes/mockup-youtalk-ai.png"
                 alt="Mockup premium del Reto VIP YouTalk AI"
                 loading="eager"
                 fetchPriority="high"
@@ -53,7 +81,7 @@ function UpsellPage() {
               <div className="rounded-2xl border border-navy/10 bg-white/70 p-4">
                 <p className="text-xs font-bold uppercase tracking-widest text-coral">Ya adquirido</p>
                 <img
-                  src="/images/mockup-metodo-youtalk21.png"
+                  src="/imagenes/mockup-metodo-youtalk21.png"
                   alt="Método YouTalk 21 adquirido antes de esta oferta"
                   loading="lazy"
                   decoding="async"
@@ -103,7 +131,7 @@ function UpsellPage() {
           {/* OFERTA */}
           <div className="mt-12 rounded-3xl bg-navy p-8 text-center text-white shadow-elegant">
             <img
-              src="/images/mockup-stack-completo-youtalk21.png"
+              src="/imagenes/mockup-stack-completo-youtalk21.png"
               alt="Ecosistema YouTalk 21 con el complemento YouTalk AI"
               loading="lazy"
               decoding="async"
@@ -118,26 +146,12 @@ function UpsellPage() {
               Este botón agrega únicamente el Reto VIP YouTalk AI por ${prices.upsellUSD} USD. El método principal ya fue adquirido; los demás productos del ecosistema no se agregan con esta compra.
             </p>
 
-            <div className="mt-8 flex flex-col items-center gap-3">
-              <a
-                href={href}
-                onClick={() => track("UpsellAccept", { product: "youtalk-ai", price: prices.upsellUSD })}
-                className="inline-flex w-full max-w-md items-center justify-center gap-2 rounded-2xl bg-teal px-6 py-4 text-base font-bold uppercase tracking-wide text-teal-foreground shadow-elegant transition-transform hover:-translate-y-0.5"
-              >
-                Sí, quiero activar YouTalk AI por ${prices.upsellUSD} USD
-                <ArrowRight className="h-5 w-5" />
-              </a>
-              <p className="flex items-center gap-1.5 text-xs text-white/60">
-                <ShieldCheck className="h-4 w-4 text-teal" />
-                Pago seguro procesado por Hotmart · Garantía según condiciones de Hotmart.
-              </p>
-              <Link
-                to="/gracias"
-                className="mt-2 text-sm text-white/70 underline underline-offset-4 hover:text-white"
-              >
-                No, prefiero practicar por mi cuenta
-              </Link>
+            <div className="mx-auto mt-8 w-full max-w-md rounded-2xl bg-white p-4 text-navy shadow-elegant">
+              <div id="hotmart-sales-funnel" />
             </div>
+            <p className="mt-3 text-xs text-white/60">
+              Compra con un clic procesada de forma segura por Hotmart.
+            </p>
           </div>
 
           <p className="mt-6 text-center text-xs text-muted-foreground">
