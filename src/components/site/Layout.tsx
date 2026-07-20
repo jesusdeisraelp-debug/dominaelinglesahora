@@ -5,6 +5,7 @@ import { MobileCTA } from "./MobileCTA";
 import { CookieNotice } from "./CookieNotice";
 import { captureUTMs } from "@/lib/utm";
 import { track } from "@/lib/analytics";
+import { initMetaPixel, trackPageView } from "@/lib/meta-pixel";
 
 type Props = {
   children: ReactNode;
@@ -29,7 +30,13 @@ export function SiteLayout({
 
   useEffect(() => {
     captureUTMs();
-    if (pageName) track("ViewContent", { page: pageName });
+    initMetaPixel();
+  }, []);
+
+  useEffect(() => {
+    if (!pageName) return;
+    trackPageView();
+    track("ViewContent", { page: pageName });
   }, [pageName]);
 
   useEffect(() => {

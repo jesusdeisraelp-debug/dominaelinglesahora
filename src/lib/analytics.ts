@@ -34,13 +34,22 @@ function getGaId(): string {
   return (import.meta.env.VITE_GA4_ID as string | undefined) || analyticsIds.ga4Id;
 }
 
+const META_STANDARD_EVENTS: ReadonlySet<AnalyticsEvent> = new Set<AnalyticsEvent>([
+  "ViewContent",
+  "Lead",
+  "InitiateCheckout",
+  "Purchase",
+  "CompleteRegistration",
+]);
+
 export function track(event: AnalyticsEvent, params?: Record<string, unknown>) {
   if (typeof window === "undefined") return;
 
   // Meta Pixel
   if (getMetaId() && typeof window.fbq === "function") {
     try {
-      window.fbq("track", event, params ?? {});
+      const method = META_STANDARD_EVENTS.has(event) ? "track" : "trackCustom";
+      window.fbq(method, event, params ?? {});
     } catch {
       /* noop */
     }
