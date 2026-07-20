@@ -30,10 +30,13 @@ export function initMetaPixel(): void {
 
   // Stub oficial de Meta (adaptado para TS).
   if (!window.fbq) {
-    const n = function (...args: unknown[]) {
-      // @ts-expect-error runtime stub queueing
-      n.callMethod ? n.callMethod.apply(n, args) : n.queue.push(args);
-    } as Window["fbq"] & { callMethod?: unknown; queue: unknown[]; push: unknown; loaded: boolean; version: string };
+    const n: ((...args: unknown[]) => void) & Record<string, unknown> = function (
+      ...args: unknown[]
+    ) {
+      const self = n as unknown as { callMethod?: (...a: unknown[]) => void; queue: unknown[] };
+      if (self.callMethod) self.callMethod.apply(n, args);
+      else self.queue.push(args);
+    } as ((...args: unknown[]) => void) & Record<string, unknown>;
     n.queue = [];
     n.loaded = true;
     n.version = "2.0";
