@@ -42,7 +42,7 @@ export const social = {
 } as const;
 
 export const analyticsIds = {
-  metaPixelId: "" as string,
+  metaPixelId: "1428510025073454" as string,
   ga4Id: "" as string,
 };
 
