@@ -25,7 +25,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 /* ------------ Small primitives (local to sales page) ------------ */
 
@@ -168,8 +168,8 @@ export function SalesPage() {
             <Chip tone="navy">Video</Chip>
             <h2 className="mt-4 text-navy">Mira cómo funciona YouTalk 21 en 90 segundos</h2>
           </div>
-            <button
-  type="button"
+          <button
+            type="button"
             onClick={() => { setVideoOpen(true); track("ViewVSL"); }}
             className="group relative mx-auto mt-8 block aspect-video w-full max-w-3xl overflow-hidden rounded-2xl border border-navy/10 bg-navy shadow-elegant"
             aria-label="Reproducir video de presentación"
@@ -203,13 +203,16 @@ export function SalesPage() {
             </div>
           </button>
           <Dialog open={videoOpen} onOpenChange={setVideoOpen}>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Video de presentación próximamente</DialogTitle>
-                <DialogDescription>
-                  Estamos terminando el video de presentación de YouTalk 21. Muy pronto podrás verlo aquí. Mientras tanto, sigue leyendo — la página completa explica todo el método paso a paso.
-                </DialogDescription>
-              </DialogHeader>
+            <DialogContent className="max-w-4xl border-0 bg-black p-0">
+              <div className="aspect-video w-full overflow-hidden rounded-lg">
+                <iframe
+                  className="h-full w-full"
+                  src="https://www.youtube.com/embed/uaZ9RxnmzYM?autoplay=1&rel=0"
+                  title="Video de presentación de YouTalk 21"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
             </DialogContent>
           </Dialog>
 
