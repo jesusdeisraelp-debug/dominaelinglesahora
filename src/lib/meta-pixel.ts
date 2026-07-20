@@ -9,7 +9,6 @@ import { analyticsIds } from "@/config/funnel";
 
 declare global {
   interface Window {
-    fbq?: ((...args: unknown[]) => void) & { callMethod?: unknown; queue?: unknown[]; loaded?: boolean; version?: string; push?: unknown };
     _fbq?: unknown;
     __metaPixelInitialized?: boolean;
   }
