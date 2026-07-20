@@ -174,28 +174,12 @@ export function SalesPage() {
             className="group relative mx-auto mt-8 block aspect-video w-full max-w-3xl overflow-hidden rounded-2xl border border-navy/10 bg-navy shadow-elegant"
             aria-label="Reproducir video de presentación"
           >
-            <svg viewBox="0 0 800 450" className="absolute inset-0 h-full w-full opacity-70" preserveAspectRatio="none" aria-hidden>
-              <defs>
-                <linearGradient id="wave" x1="0" x2="1">
-                  <stop offset="0" stopColor="oklch(0.82 0.14 190)" />
-                  <stop offset="1" stopColor="oklch(0.72 0.18 30)" />
-                </linearGradient>
-              </defs>
-              {Array.from({ length: 60 }).map((_, i) => {
-                const h = 20 + Math.abs(Math.sin(i * 0.6)) * 180 + (i % 5) * 8;
-                return (
-                  <rect
-                    key={i}
-                    x={i * 14 + 10}
-                    y={225 - h / 2}
-                    width="6"
-                    height={h}
-                    rx="3"
-                    fill="url(#wave)"
-                  />
-                );
-              })}
-            </svg>
+            <img
+              src="https://img.youtube.com/vi/uaZ9RxnmzYM/maxresdefault.jpg"
+              alt="Miniatura del video de presentación de YouTalk 21"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-navy/40" />
             <div className="absolute inset-0 flex items-center justify-center">
               <span className="grid h-20 w-20 place-items-center rounded-full bg-teal text-teal-foreground shadow-elegant transition-transform group-hover:scale-105">
                 <Play className="ml-1 h-8 w-8" fill="currentColor" />
