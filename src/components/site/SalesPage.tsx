@@ -168,7 +168,6 @@ export function SalesPage() {
             <Chip tone="navy">Video</Chip>
             <h2 className="mt-4 text-navy">Mira cómo funciona YouTalk 21 en 90 segundos</h2>
           </div>
-          <button
             type="button"
             onClick={() => { setVideoOpen(true); track("ViewVSL"); }}
             className="group relative mx-auto mt-8 block aspect-video w-full max-w-3xl overflow-hidden rounded-2xl border border-navy/10 bg-navy shadow-elegant"
