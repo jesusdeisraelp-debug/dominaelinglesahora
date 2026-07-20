@@ -30,7 +30,13 @@ export function SiteLayout({
 
   useEffect(() => {
     captureUTMs();
-    if (pageName) track("ViewContent", { page: pageName });
+    initMetaPixel();
+  }, []);
+
+  useEffect(() => {
+    if (!pageName) return;
+    trackPageView();
+    track("ViewContent", { page: pageName });
   }, [pageName]);
 
   useEffect(() => {
