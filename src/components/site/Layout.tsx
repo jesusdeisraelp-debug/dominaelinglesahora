@@ -1,11 +1,11 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { MobileCTA } from "./MobileCTA";
 import { CookieNotice } from "./CookieNotice";
 import { captureUTMs } from "@/lib/utm";
 import { track } from "@/lib/analytics";
-import { initMetaPixel, trackPageView } from "@/lib/meta-pixel";
+import { trackPageView } from "@/lib/meta-pixel";
 
 type Props = {
   children: ReactNode;
@@ -27,15 +27,21 @@ export function SiteLayout({
   pageName,
 }: Props) {
   const [scrolled, setScrolled] = useState(false);
+  const firstPageView = useRef(true);
 
   useEffect(() => {
     captureUTMs();
-    initMetaPixel();
   }, []);
 
   useEffect(() => {
     if (!pageName) return;
-    trackPageView();
+    // Meta Pixel snippet in <head> already fires the initial PageView on load.
+    // Only fire on subsequent client-side navigations to avoid duplicates.
+    if (firstPageView.current) {
+      firstPageView.current = false;
+    } else {
+      trackPageView();
+    }
     track("ViewContent", { page: pageName });
   }, [pageName]);
 
