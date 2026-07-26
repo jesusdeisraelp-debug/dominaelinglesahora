@@ -121,11 +121,15 @@ function UpsellPage() {
               Este botón agrega únicamente el Reto VIP YouTalk AI por ${prices.upsellUSD} USD. El método principal ya fue adquirido; los demás productos del ecosistema no se agregan con esta compra.
             </p>
 
-            <div className="mx-auto mt-8 w-full max-w-md rounded-2xl bg-white p-4 text-navy shadow-elegant">
-              <div id="hotmart-sales-funnel" />
-            </div>
+            <a
+              href={upsellHref}
+              onClick={() => track("InitiateCheckout", { product: "youtalk-ai", price: prices.upsellUSD })}
+              className="mx-auto mt-8 inline-flex w-full max-w-md items-center justify-center rounded-2xl bg-teal px-6 py-4 text-center font-bold text-navy shadow-elegant transition-transform hover:scale-[1.02] active:scale-[0.98]"
+            >
+              Sí, quiero agregar YouTalk AI por ${prices.upsellUSD} USD
+            </a>
             <p className="mt-3 text-xs text-white/60">
-              Compra con un clic procesada de forma segura por Hotmart.
+              Serás dirigido al pago seguro procesado por Hotmart.
             </p>
           </div>
 
