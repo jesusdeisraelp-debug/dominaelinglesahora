@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Sparkles, MessageCircle, Bot, Mic, Zap } from "lucide-react";
 import { SiteLayout } from "@/components/site/Layout";
-import { prices } from "@/config/funnel";
+import { checkout, prices } from "@/config/funnel";
 import { track } from "@/lib/analytics";
+import { withUTMs } from "@/lib/utm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useEffect } from "react";
 
@@ -22,35 +23,9 @@ export const Route = createFileRoute("/upsell")({
 function UpsellPage() {
   useEffect(() => {
     track("UpsellView", { product: "youtalk-ai" });
-
-    const mountFunnel = () => {
-      const hotmart = (window as Window & {
-        checkoutElements?: {
-          init: (type: string) => { mount: (selector: string) => void };
-        };
-      }).checkoutElements;
-
-      hotmart?.init("salesFunnel").mount("#hotmart-sales-funnel");
-    };
-
-    const existingScript = document.querySelector<HTMLScriptElement>(
-      'script[src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"]',
-    );
-
-    if (existingScript) {
-      if ((window as Window & { checkoutElements?: unknown }).checkoutElements) mountFunnel();
-      else existingScript.addEventListener("load", mountFunnel, { once: true });
-      return () => existingScript.removeEventListener("load", mountFunnel);
-    }
-
-    const script = document.createElement("script");
-    script.src = "https://checkout.hotmart.com/lib/hotmart-checkout-elements.js";
-    script.async = true;
-    script.addEventListener("load", mountFunnel, { once: true });
-    document.body.appendChild(script);
-
-    return () => script.removeEventListener("load", mountFunnel);
   }, []);
+
+  const upsellHref = withUTMs(checkout.HOTMART_UPSELL_URL);
 
   return (
     <SiteLayout pageName="upsell" hideNav>
