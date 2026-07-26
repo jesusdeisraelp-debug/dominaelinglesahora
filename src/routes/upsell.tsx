@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Sparkles, MessageCircle, Bot, Mic, Zap } from "lucide-react";
 import { SiteLayout } from "@/components/site/Layout";
-import { prices } from "@/config/funnel";
+import { checkout, prices } from "@/config/funnel";
 import { track } from "@/lib/analytics";
+import { withUTMs } from "@/lib/utm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useEffect } from "react";
 
@@ -22,35 +23,9 @@ export const Route = createFileRoute("/upsell")({
 function UpsellPage() {
   useEffect(() => {
     track("UpsellView", { product: "youtalk-ai" });
-
-    const mountFunnel = () => {
-      const hotmart = (window as Window & {
-        checkoutElements?: {
-          init: (type: string) => { mount: (selector: string) => void };
-        };
-      }).checkoutElements;
-
-      hotmart?.init("salesFunnel").mount("#hotmart-sales-funnel");
-    };
-
-    const existingScript = document.querySelector<HTMLScriptElement>(
-      'script[src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"]',
-    );
-
-    if (existingScript) {
-      if ((window as Window & { checkoutElements?: unknown }).checkoutElements) mountFunnel();
-      else existingScript.addEventListener("load", mountFunnel, { once: true });
-      return () => existingScript.removeEventListener("load", mountFunnel);
-    }
-
-    const script = document.createElement("script");
-    script.src = "https://checkout.hotmart.com/lib/hotmart-checkout-elements.js";
-    script.async = true;
-    script.addEventListener("load", mountFunnel, { once: true });
-    document.body.appendChild(script);
-
-    return () => script.removeEventListener("load", mountFunnel);
   }, []);
+
+  const upsellHref = withUTMs(checkout.HOTMART_UPSELL_URL);
 
   return (
     <SiteLayout pageName="upsell" hideNav>
@@ -146,11 +121,15 @@ function UpsellPage() {
               Este botón agrega únicamente el Reto VIP YouTalk AI por ${prices.upsellUSD} USD. El método principal ya fue adquirido; los demás productos del ecosistema no se agregan con esta compra.
             </p>
 
-            <div className="mx-auto mt-8 w-full max-w-md rounded-2xl bg-white p-4 text-navy shadow-elegant">
-              <div id="hotmart-sales-funnel" />
-            </div>
+            <a
+              href={upsellHref}
+              onClick={() => track("InitiateCheckout", { product: "youtalk-ai", price: prices.upsellUSD })}
+              className="mx-auto mt-8 inline-flex w-full max-w-md items-center justify-center rounded-2xl bg-teal px-6 py-4 text-center font-bold text-navy shadow-elegant transition-transform hover:scale-[1.02] active:scale-[0.98]"
+            >
+              Sí, quiero agregar YouTalk AI por ${prices.upsellUSD} USD
+            </a>
             <p className="mt-3 text-xs text-white/60">
-              Compra con un clic procesada de forma segura por Hotmart.
+              Serás dirigido al pago seguro procesado por Hotmart.
             </p>
           </div>
 

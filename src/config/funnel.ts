@@ -31,7 +31,7 @@ export const prices = {
  */
 export const checkout = {
   HOTMART_MAIN_URL: "https://pay.hotmart.com/Q100176724J?checkoutMode=10",
-  HOTMART_UPSELL_URL: "#checkout-upsell-pendiente",
+  HOTMART_UPSELL_URL: "https://pay.hotmart.com/J106799313D?bid=1785020013301",
   SUPPORT_URL: "mailto:soporte@dominaelinglesahora.lat",
 } as const;
 
